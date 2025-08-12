@@ -1,3 +1,8 @@
+Python (Flask)
+SQLite
+Pandas
+HTML/CSS
 flask
 pandas
 openpyxl
+
