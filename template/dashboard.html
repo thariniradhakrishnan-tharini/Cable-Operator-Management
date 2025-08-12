@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Dashboard - Cable Network Project</title>
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #003366;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dashboard</h1>
+
+    <h2>Customers with Package 350</h2>
+    <p>Total Customers: {{ package_350_count }}</p>
+    <ul>
+        {% for customer in package_350_customers %}
+            <li>{{ customer[0] }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Customers with Package 400</h2>
+    <p>Total Customers: {{ package_400_count }}</p>
+    <ul>
+        {% for customer in package_400_customers %}
+            <li>{{ customer[0] }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Customers with Network Connections (Yes)</h2>
+    <ul>
+        {% for customer in network_yes_customers %}
+            <li>{{ customer[0] }} (Address: {{ customer[1] }}, Packages: {{ customer[2] }}, Prior Booking: {{ customer[3] }})</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Customers Grouped by Address</h2>
+    <table>
+        <tr>
+            <th>Address</th>
+            <th>Customer Names</th>
+            <th>Customer Count</th>
+        </tr>
+        {% for address in addresses %}
+            <tr>
+                <td>{{ address[0] }}</td>
+                <td>{{ address[1] }}</td>
+                <td>{{ address[2] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{{ url_for('home') }}">Go to Home</a>
+</body>
+</html>
